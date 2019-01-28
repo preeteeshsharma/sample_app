@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def new
@@ -59,17 +60,20 @@ class UsersController < ApplicationController
     end
 
     # Before filters
+    
+    #moved to application controller
     #if a user is trying to access his edit page without being logged in 
     # Confirms a logged-in user.
-    def logged_in_user
-      unless logged_in?
-        #stores the current url that the user entered in sessions[:forwarding_url]
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
+    #def logged_in_user
+    # unless logged_in?
+    #    #stores the current url that the user entered in sessions[:forwarding_url]
+    #    store_location
+    #    flash[:danger] = "Please log in."
+    #    redirect_to login_url
+    #  end
+    #end
     #if another user is trying to access someone's edit page 
+    
     # Confirms the correct user.
     def correct_user
       # @user is used in edit and update actions. So if current user is someone else
