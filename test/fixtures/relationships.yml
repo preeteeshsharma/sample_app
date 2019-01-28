@@ -1,0 +1,18 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  follower: example
+  followed: nabha
+
+two:
+  follower: example
+  followed: sindhi
+
+three:
+  follower: nabha
+  followed: example
+
+four:
+  follower: archer
+  followed: example
+
